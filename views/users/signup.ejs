@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+<body class="no-footer-page">
+    <div class="container mt-5">
+        <h3 class="col-7 offset-5">SIGNUP</h3>
+        <form action="/signup" method="post" class="needs-validation" novalidate>
+            <div class="form-group mb-3">
+                <label for="username">username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required >
+                <div class="valid-feedback">
+                  Ummm...username Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    Please enter a valid username
+                  </div>
+            
+            </div>
+            <div class="form-group">
+                <label for="email">email</label>
+                <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                    Please enter a valid email
+                  </div>
+            </div>
+            <div class="form-group">
+                <label for="passwoard">password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+                <div class="valid-feedback">
+                     create a strong passwoard
+                  </div>
+                  <div class="invalid-feedback">
+                    error
+                  </div>
+            </div>
+        
+            <br><button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    </body>
+    <footer  class="no-footer"></footer>

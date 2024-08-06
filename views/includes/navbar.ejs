@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings">All listings</a>
+        </li>
+      </ul>
+      <!-- search bar -->
+      <form class="d-flex ml-4" role="search" id="searchForm">
+        <input class="form-control mt-2" type="search" placeholder="Search destination" aria-label="Search" id="searchInput">
+        <button class="btn btn-outline-success ms-2 search-btn" type="submit">Search</button>
+      </form>
+      
+      <div class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">Create New Listing</a>
+        </li>
+        <% if(!curuser){ %>
+          <a class="nav-link" href="/signup"><b>Sign up</b></a>
+          <a class="nav-link " href="/login"><b>Login</b></a>
+          <% }%>
+            <% if(curuser){ %>
+              <a class="nav-link" href="/logout">Logout</a>
+              <% }%>
+      </div>
+     
+    </div>
+  </div>
+</nav>

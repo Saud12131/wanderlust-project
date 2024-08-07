@@ -24,11 +24,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
-
+const dotenv = require('dotenv');
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dburl = process.env.ATLASDB_URL;
 
-mongoose.connect(MONGO_URL)
+dotenv.config();
+
+
+mongoose.connect(dburl)
     .then(() => {
         console.log("Connected to database");
     })
@@ -43,23 +46,22 @@ const store = MongoStore.create({
     },
      touchAfter: 24 * 3600,
 });
+store.on("error", (err) => {
+    console.log("ERROR ON MONGO SESSION STORE", err);
+  });
+  
 
-// store.on("error", () => {
-//     console.log("ERROR ON MONGO SESSION STORE", err);
-// })
-
-const sessionoption = {
-//    store,
+  const sessionoption = {
+    store,
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
-        expires: Date.now() + 7 * 24 * 60 * 60 * 100,
-        maxAge: 7 * 24 * 60 * 60 * 100,
-        httpOnly: true,
+      expires: Date.now() + 7 * 24 * 60 * 60 * 1000, // Correct expiry time
+      maxAge: 7 * 24 * 60 * 60 * 1000, // Correct max age
+      httpOnly: true,
     },
-};
-
+  };
 app.use(session(sessionoption));
 app.use(flash());
 

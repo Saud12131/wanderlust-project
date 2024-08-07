@@ -1,6 +1,6 @@
 body {
   font-family: "Plus Jakarta Sans" !important;
-
+  background-color: #d8f3dc !important;
 }
 
 
@@ -57,15 +57,144 @@ body {
   justify-content: space-between;
   font-size: 0.8rem;
 }
-.no-footer{
+
+.no-footer {
   display: none;
 }
 
-.no-footer-page footer{
+.no-footer-page footer {
   display: none;
 }
-.search-btn{
+
+.search-btn {
   height: 2.5rem;
   width: 5.8rem;
   margin-top: 0.5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.f-info-social i {
+  margin: 0 10px;
+}
+
+.f-info-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar {
+  background-color: #b6f9c9  !important;
+
+}
+.icon{
+  color: #208b3a;
+}
+
+.filters {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  z-index: 999;
+ 
+}
+
+.filter {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.filter i {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.filter p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.tax-toggle {
+  display: inline-block;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .filters{
+    flex-direction: row;
+    flex-direction: column;
+    height: 100px;
+    width: 100%;
+  }
+
+  .filter {
+    flex-direction: row;
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .tax-toggle {
+    margin-left: auto;
+    padding: 0 10px;
+  }
+}
+/* styles.css */
+
+/* Container styling */
+.container {
+  margin-top: 1rem; /* Adjust margin as needed */
+}
+
+/* Card listing styling */
+.card-listing {
+  text-align: center; /* Center-align contents */
+  margin-bottom: 1rem; /* Space below the card */
+}
+
+/* Image styling */
+.show-card-img-top {
+  max-width: 100%; 
+  height: 300px; 
+  width: 600px; /* Set a fixed width for medium size */
+  display: block; /* Ensure image behaves as a block element */
+  margin: 0 auto; /* Center the image horizontally */
+  margin-left: 0;
+}
+
+/* Media Query for Mobile View */
+@media (max-width: 768px) {
+  .show-card-img-top {
+    width: 100%; /* Adjust to fit container on smaller screens */
+    max-width: 100%; /* Ensure the image does not exceed container width */
+  }
 }

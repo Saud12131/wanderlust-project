@@ -17,6 +17,7 @@ const localStrategy = require("passport-local");
 const user = require("./models/user.js");
 const User = require("./models/user.js");
 const { log } = require("console");
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +25,7 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dburl = process.env.ATLASDB_URL;
 
 mongoose.connect(dburl)
@@ -37,19 +38,18 @@ mongoose.connect(dburl)
 
 const store = MongoStore.create({
     mongoUrl: dburl,
-    crypto:{
-        secret:process.env.SECRET,
+    crypto: {
+        secret: process.env.SECRET,
     },
-    touchAfter: 24 * 3600,
-}); 
+     touchAfter: 24 * 3600,
+});
 
-store.on("error",()=>{
-    console.log("ERROR ON MONGO SESSION STORE",err);
-    
+store.on("error", () => {
+    console.log("ERROR ON MONGO SESSION STORE", err);
 })
 
 const sessionoption = {
-    store,
+   store,
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
@@ -59,11 +59,6 @@ const sessionoption = {
         httpOnly: true,
     },
 };
-
-app.get("/", (req, res) => {
-    res.render("listings/root.ejs");//root route
-
-});
 
 app.use(session(sessionoption));
 app.use(flash());

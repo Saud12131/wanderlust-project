@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Listing = require("../models/listings");
 
 module.exports.indexroute = async (req, res) => {
@@ -23,17 +24,25 @@ module.exports.showroute = async (req, res) => {
     res.render("listings/show.ejs", { listing });
 }
 
+
 module.exports.createroute = async (req, res) => {
-    let url = req.file.path;
-    let filename = req.file.filename;
-    let newListing = new Listing(req.body.listing);
+    const { path: url, filename } = req.file;
+    const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
     newListing.image = { url, filename };
+
+    // Debugging: Log new listing before saving
+    console.log('New Listing Before Save:', newListing);
+
     await newListing.save();
-    console.log(newListing.image);
-    req.flash("success", "new listing created");
+
+    // Debugging: Log new listing after saving
+    console.log('New Listing After Save:', newListing);
+
+    req.flash("success", "New listing created");
     res.redirect("/listings");
-}
+};
+
 
 
 module.exports.editlisting = async (req, res) => {

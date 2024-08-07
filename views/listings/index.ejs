@@ -35,7 +35,7 @@
     </style>
 
     <body>
-        <div id="filters">
+        <div id="filters" class="filters">
             <div class="filter">
                 <div> <i class="fa-solid fa-person-swimming"></i></div>
                 <p>Amazing pools</p>
@@ -86,10 +86,10 @@
                 <% for (let listings of allListings) { %>
                     <div class="col">
                         <div class="card-listing h-100" style="width:20rem;">
-                            <img src="<%= listings.image.url%>" class="card-img-top" alt="...">
+                            <img src="<%= listings.image.url %>" class="card-img-top" alt="Listing Image">
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <%= listings.title %>
+                                        <%= listings.title %>
                                 </h4>
                                 <h5 class="card-title mt-2">&#8377;<%= listings.price.toLocaleString("en-IN") %> /night
                                         <i class="tax-info">&nbsp; +18% GST </i></h5>

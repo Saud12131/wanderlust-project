@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node":"22.0.0"
+    "node": "22.0.0"
   },
   "name": "firstproject",
   "version": "1.0.0",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "My major project Wanderlust",
   "dependencies": {
+    "cloudinary": "^2.4.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.5",
